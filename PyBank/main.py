@@ -6,10 +6,10 @@ csv_path = os.path.join('Resources','budget_data.csv')
 #opens the file budget_data.csv
 with open(csv_path) as budget_file:
 
-    budgetreader=csv.reader(budget_file, delimiter=',')
+    budgetreader = csv.reader(budget_file, delimiter = ',')
     
     #skips reading the top row/header 
-    budget_header=next(budgetreader)
+    budget_header = next(budgetreader)
 
     #create empty lists to store data 
     month = [ ]
@@ -23,7 +23,7 @@ with open(csv_path) as budget_file:
         #add the second column to the profit/loss list 
         profitloss.append(int(row[1]))
         #sum all the values in 2nd column to get total budget 
-        total_budget=sum(profitloss)
+        total_budget = sum(profitloss)
 
     #Create new change list to hold differences in consecutive profit/loss values
     change = [ ] 
@@ -36,7 +36,7 @@ with open(csv_path) as budget_file:
         change.append(int(data))
 
     #Calculates for the average differences 
-    average_change=sum(change)/(len(profitloss)-1)
+    average_change = sum(change)/(len(profitloss)-1)
     #print the average change to 2 decimal places 
 
     #Function finds greatest increase between consecutive months in profit/loss
@@ -67,7 +67,7 @@ with open(csv_path) as budget_file:
 output_file = os.path.join('analysis','budget_analysis.txt')
 
 with open(output_file, "w", newline="") as budget:
-    budget_writer=csv.writer(budget)
+    budget_writer = csv.writer(budget)
     budget_writer.writerow(['Financial Analysis'])
     budget_writer.writerow(['-------------------------------'])
     budget_writer.writerow(['Total Months: ' + str(month_count)])
